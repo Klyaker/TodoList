@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
 import ListItem from './components/ListItem';
 import Form from './components/Form';
-import {removeHandler} from './components/ListItem';
+
 
 export default function App() {
   const [listOfItems, setListOfItems] = useState([
@@ -24,7 +24,7 @@ export default function App() {
     })
   }
 
-  const removeHandler = (key) => {
+  const deleteHandler = (key) => {
     setListOfItems((list) => {
       return list.filter(listOfItems => listOfItems.key != key)
     });
@@ -36,7 +36,7 @@ export default function App() {
       <Form addHandler={addHandler}/>
       <View>
         <FlatList data={listOfItems} renderItem={({item}) => (
-          <ListItem el={item} removeHandler={removeHandler}/>
+          <ListItem el={item} deleteHandler={deleteHandler}/>
         )} />
       </View>
     </View>
